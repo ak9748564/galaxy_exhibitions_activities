@@ -6,10 +6,7 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const allowedOrigin=["*",'https://activities-one.vercel.app/']
-app.use(cors({
-    origin:allowedOrigin,
-    Credentials:true
-}))
+app.use(cors())
 
 var activityRoute = require('./routes/activityRoute');
 
