@@ -44,7 +44,9 @@ const importActivity = async(req,res) => {
 }
 const getActivities = async(req,res) => {
     try {
-        const response = await Activity.find();
+        const currentPage = req.query.currentPage || 0;
+        const itemsPerPage = req.query.itemsPerPage || 100;
+        const response = await Activity.find().skip(currentPage*itemsPerPage).limit(itemsPerPage);
         // console.log(response)
         res.send({status:200,message:'activities got successfully',data:response})
     } catch (error) {
