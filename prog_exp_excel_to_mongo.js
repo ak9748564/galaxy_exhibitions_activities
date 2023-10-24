@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect("mongodb+srv://akge77926:galaxy_exhibitions@cluster1.nnmlclt.mongodb.net/galaxy_exhibitions").then(res=>console.log("mongodb connected")).catch(err=>console.log(err));
 
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const allowedOrigin=["*",'https://activities-one.vercel.app/']
