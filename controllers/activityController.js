@@ -49,7 +49,7 @@ const getActivities = async(req,res) => {
         const response = await Activity.find().skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find().countDocuments();
         // console.log(response)
-        res.send({status:200,message:'activities got successfully',data:{response.recordCount})
+        res.send({status:200,message:'activities got successfully',data:{response,recordCount})
     } catch (error) {
         res.send({message:error.message})
     }
