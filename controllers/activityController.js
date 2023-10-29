@@ -46,8 +46,49 @@ const getActivities = async(req,res) => {
     try {
         const currentPage = req.query.currentPage || 0;
         const itemsPerPage = req.query.itemsPerPage || 100;
-        const response = await Activity.find().skip(currentPage*itemsPerPage).limit(itemsPerPage);
-        const recordCount = await Activity.find().countDocuments();
+        const searchText = req.query.searchText;
+        const response = await Activity.find({
+            "$or":[
+                { "Activity Master: Activity Master Number": {$regex:searchText} },
+                { "Zone": {$regex:searchText} },
+                { "Activity Code": {$regex:searchText} },
+                { "Activity Name": {$regex:searchText} },
+                { "Status": {$regex:searchText} },
+                { "Minimum Share Capital": {$regex:searchText} },
+                { "License Type": {$regex:searchText} },
+                { "Is Not Allowed for Coworking(ESR)": {$regex:searchText} },
+                { "RAKEZ HSE Risk Classification": {$regex:searchText} },
+                { "Compliance Risk Rating": {$regex:searchText} },
+                { "Is Special": {$regex:searchText} },
+                { "Activity Price": {$regex:searchText} },
+                { "Activity Group": {$regex:searchText} },
+                { "Segment Name English": {$regex:searchText} },
+                { "Description": {$regex:searchText} },
+                { "Qualification Requirement": {$regex:searchText} },
+                { "Documents Required": {$regex:searchText} },
+            ]
+        }).skip(currentPage*itemsPerPage).limit(itemsPerPage);
+        const recordCount = await Activity.find({
+            "$or":[
+                { "Activity Master: Activity Master Number": {$regex:searchText} },
+                { "Zone": {$regex:searchText} },
+                { "Activity Code": {$regex:searchText} },
+                { "Activity Name": {$regex:searchText} },
+                { "Status": {$regex:searchText} },
+                { "Minimum Share Capital": {$regex:searchText} },
+                { "License Type": {$regex:searchText} },
+                { "Is Not Allowed for Coworking(ESR)": {$regex:searchText} },
+                { "RAKEZ HSE Risk Classification": {$regex:searchText} },
+                { "Compliance Risk Rating": {$regex:searchText} },
+                { "Is Special": {$regex:searchText} },
+                { "Activity Price": {$regex:searchText} },
+                { "Activity Group": {$regex:searchText} },
+                { "Segment Name English": {$regex:searchText} },
+                { "Description": {$regex:searchText} },
+                { "Qualification Requirement": {$regex:searchText} },
+                { "Documents Required": {$regex:searchText} },
+            ]
+        }).countDocuments();
         // console.log(response)
         res.send({status:200,message:'activities got successfully',data:{response,recordCount}})
     } catch (error) {
