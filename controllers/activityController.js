@@ -65,8 +65,7 @@ const getActivities = async(req,res) => {
                 { "Segment Name English": {$regex:searchText} },
                 { "Description": {$regex:searchText} },
                 { "Qualification Requirement": {$regex:searchText} },
-                { "Documents Required": {$regex:searchText} },
-                { "Status": "Active" },
+                { "Documents Required": {$regex:searchText} }
             ]
         }).skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find({
