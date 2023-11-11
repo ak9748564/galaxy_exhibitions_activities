@@ -67,7 +67,7 @@ const getActivities = async(req,res) => {
                 { "Qualification Requirement": {$regex:searchText} },
                 { "Documents Required": {$regex:searchText} }
             ]
-        }).skip(currentPage*itemsPerPage).limit(itemsPerPage);
+        }).where('Status').equals('Active')..skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find({
             "$or":[
                 { "Activity Master: Activity Master Number": {$regex:searchText} },
