@@ -88,7 +88,7 @@ const getActivities = async(req,res) => {
                 { "Qualification Requirement": {$regex:searchText} },
                 { "Documents Required": {$regex:searchText} },
             ]
-        }).countDocuments();
+        }).where('Status').equals('Active').countDocuments();
         // console.log(response)
         res.send({status:200,message:'activities got successfully',data:{response,recordCount}})
     } catch (error) {
