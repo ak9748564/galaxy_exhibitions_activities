@@ -23,7 +23,7 @@ var upload = multer({storage:storage});
 const activityController = require('./../controllers/activityController');
 
 activity.post('/importActivity',upload.single('file'),activityController.importActivity);
-activity.post('/contact',async(req,res) => {
+activity.post('/contact', async (req,res) => {
     try {
         const {name,email,phone,message,activity}=req.body
         const saveuser= new Contact({
