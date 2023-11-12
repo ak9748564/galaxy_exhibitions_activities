@@ -75,15 +75,24 @@ const getActivities = async(req,res) => {
                 { "Description": {$regex:searchText} },
                 { "Qualification Requirement": {$regex:searchText} },
                 { "Documents Required": {$regex:searchText} }
-            ]
+            ],
+            {
+            "Status": "Active",
+            "Zone": zone,
+            "License Type": licenseType,
+            "Is Special": isSpecial,
+            "RAKEZ HSE Risk Classification": riskClass,
+            "Compliance Risk Rating": compRR,
+            "Activity Group": activityGroup
+            }
         })
-        .where('Status').equals('Active')
-        .where('Zone').equals(zone)
-        .where('License Type').equals(licenseType)
-        .where('Is Special').equals(isSpecial)
-        .where('RAKEZ HSE Risk Classification').equals(riskClass)
-        .where('Compliance Risk Rating').equals(compRR)
-        .where('Activity Group').equals(activityGroup)
+        // .where('Status').equals('Active')
+        // .where('Zone').equals(zone)
+        // .where('License Type').equals(licenseType)
+        // .where('Is Special').equals(isSpecial)
+        // .where('RAKEZ HSE Risk Classification').equals(riskClass)
+        // .where('Compliance Risk Rating').equals(compRR)
+        // .where('Activity Group').equals(activityGroup)
         .skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find({
             "$or":[
