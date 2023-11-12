@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const Contact=require("./../models/contactModel")
 
-activity.use(bodyParser.urlencoded({extended:true}));
+activity.use(bodyParser());
 activity.use(express.static(path.resolve(__dirname,'public')))
 
 var storage = multer.diskStorage({
