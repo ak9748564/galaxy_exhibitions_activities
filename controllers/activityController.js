@@ -48,6 +48,14 @@ const getActivities = async(req,res) => {
         const currentPage = req.query.currentPage || 0;
         const itemsPerPage = req.query.itemsPerPage || 100;
         const searchText = req.query.searchText;
+        const zone = req.query.zone;
+        const licenseType = req.query.licenseType;
+        const isSpecial = req.query.isSpecial;
+        const riskClass = req.query.riskClass;
+        const compRR = req.query.compRR;
+        const activityGroup = req.query.activityGroup;
+
+        
         const response = await Activity.find({
             "$or":[
                 { "Activity Master: Activity Master Number": {$regex:searchText} },
@@ -68,7 +76,15 @@ const getActivities = async(req,res) => {
                 { "Qualification Requirement": {$regex:searchText} },
                 { "Documents Required": {$regex:searchText} }
             ]
-        }).where('Status').equals('Active').skip(currentPage*itemsPerPage).limit(itemsPerPage);
+        })
+        .where('Status').equals('Active')
+        .where('Zone').equals(zone)
+        .where('License Type').equals(licenseType)
+        .where('Is Special').equals(isSpecial)
+        .where('RAKEZ HSE Risk Classification').equals(riskClass)
+        .where('Compliance Risk Rating').equals(compRR)
+        .where('Activity Group').equals(activityGroup)
+        .skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find({
             "$or":[
                 { "Activity Master: Activity Master Number": {$regex:searchText} },
