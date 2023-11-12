@@ -100,9 +100,9 @@ const getActivities = async(req,res) => {
 
 const getActivitiesGroup = async(req,res) => {
     try {
-        const response = await Activity.find().where('Status').equals('Active');
+        const response = await Activity.find({},{'Activity Master: Activity Master Number':1}).where('Status').equals('Active');
         // console.log(response)
-        res.send({status:200,message:'activities got successfully',data:response})
+        res.send({status:200,message:'activities groups got successfully',data:response})
     } catch (error) {
         res.send({message:error.message})
     }
