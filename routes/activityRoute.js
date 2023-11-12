@@ -25,6 +25,7 @@ const activityController = require('./../controllers/activityController');
 activity.post('/importActivity',upload.single('file'),activityController.importActivity);
 activity.post('/contact', async (req,res) => {
     try {
+        console.log(req.body);
         const {name,email,phone,message,activity}=req.body
         const saveuser= new Contact({
             name,
