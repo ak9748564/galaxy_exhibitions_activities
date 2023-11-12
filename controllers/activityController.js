@@ -76,7 +76,6 @@ const getActivities = async(req,res) => {
                 { "Qualification Requirement": {$regex:searchText} },
                 { "Documents Required": {$regex:searchText} }
             ],
-            {
             "Status": "Active",
             "Zone": zone,
             "License Type": licenseType,
@@ -84,7 +83,6 @@ const getActivities = async(req,res) => {
             "RAKEZ HSE Risk Classification": riskClass,
             "Compliance Risk Rating": compRR,
             "Activity Group": activityGroup
-            }
         })
         // .where('Status').equals('Active')
         // .where('Zone').equals(zone)
