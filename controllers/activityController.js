@@ -77,7 +77,7 @@ const getActivities = async(req,res) => {
                 { "Documents Required": {$regex:searchText} }
             ],
             "Status": "Active",
-            "Zone": zone,
+            "Zone": 'Freezone',
             // "License Type": licenseType,
             // "Is Special": isSpecial,
             // "RAKEZ HSE Risk Classification": riskClass,
