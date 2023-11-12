@@ -23,5 +23,6 @@ const activityController = require('./../controllers/activityController');
 
 activity.post('/importActivity',upload.single('file'),activityController.importActivity);
 activity.get('/getActivities',activityController.getActivities)
+activity.get('/getActivitiesGroup',activityController.getActivitiesGroup)
 
 module.exports = activity;
