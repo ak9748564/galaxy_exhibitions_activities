@@ -126,7 +126,7 @@ const contact = async(req,res) => {
             await saveuser.save();
             res.status(200).json({message:"Enquiry Sent Successfully"})
         }
-        catch(){
+        catch(error){
             res.status(400).json({message:"Enquiry failed", error:error.message})
         }
         
