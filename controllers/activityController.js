@@ -1,4 +1,5 @@
 var Activity = require('./../models/activityModel');
+var Contact = require('./../models/contactModel');
 
 var csv = require('csvtojson');
 
