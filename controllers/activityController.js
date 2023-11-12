@@ -77,12 +77,12 @@ const getActivities = async(req,res) => {
                 { "Documents Required": {$regex:searchText} }
             ],
             "Status": "Active",
-            "Zone": zone,
-            "License Type": licenseType,
-            "Is Special": isSpecial,
-            "RAKEZ HSE Risk Classification": riskClass,
-            "Compliance Risk Rating": compRR,
-            "Activity Group": activityGroup
+            // "Zone": zone,
+            // "License Type": licenseType,
+            // "Is Special": isSpecial,
+            // "RAKEZ HSE Risk Classification": riskClass,
+            // "Compliance Risk Rating": compRR,
+            // "Activity Group": activityGroup
         })
         // .where('Status').equals('Active')
         // .where('Zone').equals(zone)
