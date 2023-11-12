@@ -33,7 +33,9 @@ activity.post('/contact',async(req,res) => {
             message,
             activity
         })
-            await saveuser.save();
+        console.log(saveuser)
+          const data=  await saveuser.save();
+        console.log("data daved :" data);
             res.status(200).json({message:"Enquiry Sent Successfully"})
     
     } catch (error) {
