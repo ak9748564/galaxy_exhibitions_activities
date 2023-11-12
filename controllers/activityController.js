@@ -108,4 +108,4 @@ const getActivitiesGroup = async(req,res) => {
     }
 }
 
-module.exports = { importActivity, getActivities, getActivitiesGroup }
+module.exports = { importActivity, getActivities, getActivitiesGroup, contact }
