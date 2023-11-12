@@ -5,7 +5,7 @@ mongoose.connect("mongodb+srv://akge77926:galaxy_exhibitions@cluster1.nnmlclt.mo
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const allowedOrigin=["*",'https://activities-edes.vercel.app/']
+const allowedOrigin=["*",'https://activities-edes.vercel.app/','https://activities-sh1p.vercel.app/']
 app.use(cors({origin:allowedOrigin}))
 
 var activityRoute = require('./routes/activityRoute');
