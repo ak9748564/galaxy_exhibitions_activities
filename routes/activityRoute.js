@@ -1,5 +1,5 @@
 const express = require('express');
-const activity = express();
+const activity = express.Router();
 
 const multer = require('multer');
 const path = require('path');
