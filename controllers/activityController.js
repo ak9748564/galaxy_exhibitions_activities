@@ -113,15 +113,32 @@ const getActivitiesGroup = async(req,res) => {
 
 const contact = async(req,res) => {
     try {
-        let contactData = {
-            name:req.body.name,
-            email:req.body.email,
-            phone:req.body.phone,
-            message:req.body.message,
-            activity:req.body.activity
-        };
-           const res = await Contact.insert(contactData);
-        res.send({status:200,success:true,message:'Enquiry Sent Successfully'})        
+        const {name,email,phone,message,activity}=req.body
+        const saveuser= new Contact({
+            name,
+            email,
+            phone,
+            message,
+            activity
+        })
+
+        try{
+            await saveuser.save();
+            res.status(200).json({message:"Enquiry Sent Successfully"})
+        }
+        catch(){
+            res.status(400).json({message:"Enquiry failed", error:error.message})
+        }
+        
+        // let contactData = {
+        //     name:req.body.name,
+        //     email:req.body.email,
+        //     phone:req.body.phone,
+        //     message:req.body.message,
+        //     activity:req.body.activity
+        // };
+        //    const res = await Contact.insert(contactData);
+        // res.send({status:200,success:true,message:'Enquiry Sent Successfully'})        
     } catch (error) {
         res.send({status:400,success:false,message:error.message})
     }   
