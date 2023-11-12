@@ -109,4 +109,22 @@ const getActivitiesGroup = async(req,res) => {
     }
 }
 
+
+
+const contact = async(req,res) => {
+    try {
+        let contactData = {
+            name:req.query.name,
+            email:req.query.email,
+            phone:req.query.phone,
+            message:req.query.message,
+            activity:req.query.activity
+        };
+           const res = await Activity.insert(contactData);
+        res.send({status:200,success:true,message:'Enquiry Sent Successfully'})        
+    } catch (error) {
+        res.send({status:400,success:false,message:error.message})
+    }   
+}
+
 module.exports = { importActivity, getActivities, getActivitiesGroup, contact }
