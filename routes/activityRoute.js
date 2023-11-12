@@ -22,6 +22,7 @@ var upload = multer({storage:storage});
 const activityController = require('./../controllers/activityController');
 
 activity.post('/importActivity',upload.single('file'),activityController.importActivity);
+activity.post('/contact',activityController.contact);
 activity.get('/getActivities',activityController.getActivities)
 activity.get('/getActivitiesGroup',activityController.getActivitiesGroup)
 
