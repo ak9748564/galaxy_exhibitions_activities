@@ -95,4 +95,17 @@ const getActivities = async(req,res) => {
         res.send({message:error.message})
     }
 }
-module.exports = { importActivity, getActivities }
+
+
+
+const getActivitiesGroup = async(req,res) => {
+    try {
+        const response = await Activity.find().where('Status').equals('Active');
+        // console.log(response)
+        res.send({status:200,message:'activities got successfully',data:response})
+    } catch (error) {
+        res.send({message:error.message})
+    }
+}
+
+module.exports = { importActivity, getActivities, getActivitiesGroup }
