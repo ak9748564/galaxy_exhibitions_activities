@@ -28,11 +28,11 @@ activity.post('/contact', async (req,res) => {
         console.log(req);
         const {name,email,phone,message,activity}=req.body
         const saveuser= new Contact({
-            name:'1',
-            email:'2',
-            phone:'3',
-            message:'4',
-            activity:'5'
+            name,
+            email,
+            phone,
+            message,
+            activity
         })
         console.log(saveuser)
           const dataex=  await saveuser.save();
