@@ -120,7 +120,7 @@ const contact = async(req,res) => {
             message:req.body.message,
             activity:req.body.activity
         };
-           const res = await Activity.insert(contactData);
+           const res = await Contact.insert(contactData);
         res.send({status:200,success:true,message:'Enquiry Sent Successfully'})        
     } catch (error) {
         res.send({status:400,success:false,message:error.message})
