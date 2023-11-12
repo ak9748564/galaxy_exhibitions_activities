@@ -6,7 +6,7 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const allowedOrigin=["*",'https://activities-edes.vercel.app/','https://activities-sh1p.vercel.app/']
-app.use(cors({origin:allowedOrigin}))
+app.use(cors())
 
 var activityRoute = require('./routes/activityRoute');
 
