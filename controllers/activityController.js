@@ -23,7 +23,7 @@ const getActivities = async(req,res) => {
         
         const response = await Activity.find({
             "$or":[
-                { "Activity Master: Activity Master Number": new regExp(searchText, "i") },
+                { "Activity Master: Activity Master Number": { $regex: searchText} },
                 { "Zone": {$regex:searchText} },
                 { "Activity Code": {$regex:searchText} },
                 { "Activity Name": {$regex:searchText} },
@@ -52,7 +52,7 @@ const getActivities = async(req,res) => {
         .skip(currentPage*itemsPerPage).limit(itemsPerPage);
         const recordCount = await Activity.find({
             "$or":[
-                { "Activity Master: Activity Master Number": new regExp(searchText, "i") },
+                { "Activity Master: Activity Master Number": { $regex:searchText } },
                 { "Zone": {$regex:searchText} },
                 { "Activity Code": {$regex:searchText} },
                 { "Activity Name": {$regex:searchText} },
