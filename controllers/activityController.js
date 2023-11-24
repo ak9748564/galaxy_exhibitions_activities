@@ -23,7 +23,7 @@ const getActivities = async(req,res) => {
         
         const response = await Activity.find({
             "$or":[
-                { "Activity Master: Activity Master Number": { $regex: new RegExp("^"+searchText.toLowerCase(),"i") },
+                { "Activity Master: Activity Master Number": { $regex: new RegExp("^"+searchText.toLowerCase(),"i") } },
                 { "Zone": {$regex:searchText} },
                 { "Activity Code": {$regex:searchText} },
                 { "Activity Name": {$regex:searchText} },
